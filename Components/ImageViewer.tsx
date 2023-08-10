@@ -3,10 +3,13 @@ import { Image, StyleSheet } from "react-native";
 
 type ImageSource = {
   imageSource?: any;
+  selectedImage: any;
 };
 
-const ImageViewer: React.FC<ImageSource> = ({ imageSource }) => {
-  return <Image source={imageSource} style={styles.image} />;
+const ImageViewer: React.FC<ImageSource> = ({ imageSource, selectedImage }) => {
+  const sourceAfterSelected = selectedImage ? selectedImage : imageSource;
+
+  return <Image source={sourceAfterSelected} style={styles.image} />;
 };
 
 const styles = StyleSheet.create({
