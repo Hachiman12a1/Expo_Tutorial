@@ -5,9 +5,10 @@ import { FontAwesome } from "@expo/vector-icons";
 type ButtonViewer = {
   label: string;
   theme: string;
+  onPress: () => Promise<void>;
 };
 
-const ButtonViewer: React.FC<ButtonViewer> = ({ label, theme }) => {
+const ButtonViewer: React.FC<ButtonViewer> = ({ label, theme, onPress }) => {
   if (theme === "primary") {
     return (
       <View
@@ -18,10 +19,12 @@ const ButtonViewer: React.FC<ButtonViewer> = ({ label, theme }) => {
       >
         <Pressable
           style={[styles.button, { backgroundColor: "#fff" }]}
-          onPress={() => alert("You pressed a button.")}
+          onPress={onPress}
         >
           <FontAwesome name="picture-o" size={18} color="#25292e" />
-          <Text style={(styles.buttonLabel, { color: "25292e" })}>{label}</Text>
+          <Text style={(styles.buttonLabel, { color: "#25292e" })}>
+            {label}
+          </Text>
         </Pressable>
       </View>
     );
